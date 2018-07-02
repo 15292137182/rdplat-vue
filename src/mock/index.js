@@ -7,7 +7,7 @@ import * as sysLog from './modules/sys-log'
 import * as sysMenu from './modules/sys-menu'
 import * as sysRole from './modules/sys-role'
 import * as sysUser from './modules/sys-user'
-import * as sysGenerator from './modules/sys-user'
+import * as sysGenerator from './modules/sys-generator'
 
 // tips
 // 1. 开启/关闭[业务模块]拦截, 通过调用fnCreate方法[isOpen参数]设置.

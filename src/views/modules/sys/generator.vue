@@ -93,7 +93,7 @@
   import AddOrUpdate from './role-add-or-update'
 
   export default {
-    data() {
+    data () {
       return {
         dataForm: {
           roleName: ''
@@ -110,12 +110,12 @@
     components: {
       AddOrUpdate
     },
-    activated() {
+    activated () {
       this.getDataList()
     },
     methods: {
       // 获取数据列表
-      getDataList() {
+      getDataList () {
         this.dataListLoading = true
         this.$http({
           url: this.$http.adornUrl('/sys/generator/list'),
@@ -137,22 +137,22 @@
         })
       },
       // 每页数
-      sizeChangeHandle(val) {
+      sizeChangeHandle (val) {
         this.pageSize = val
         this.pageIndex = 1
         this.getDataList()
       },
       // 当前页
-      currentChangeHandle(val) {
+      currentChangeHandle (val) {
         this.pageIndex = val
         this.getDataList()
       },
       // 多选
-      selectionChangeHandle(val) {
+      selectionChangeHandle (val) {
         this.dataListSelections = val
       },
       // 删除
-      generatorCode(id) {
+      generatorCode (id) {
         var ids = id ? [id] : this.dataListSelections.map(item => {
           return item.roleId
         })

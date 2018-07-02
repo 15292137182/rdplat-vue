@@ -1,4 +1,4 @@
-import Mock from 'mockjs'
+  import Mock from 'mockjs'
 
 // 生成数据列表
 var dataList = []
