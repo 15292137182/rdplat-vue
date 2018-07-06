@@ -6,7 +6,7 @@ import merge from 'lodash/merge'
 
 const http = axios.create({
   timeout: 1000 * 30,
-  withCredentials: true,
+  withCredentials: true, // 加了这段就可以跨域了
   headers: {
     'Content-Type': 'application/json; charset=utf-8'
   }
@@ -16,6 +16,7 @@ const http = axios.create({
  * 请求拦截
  */
 http.interceptors.request.use(config => {
+  console.log(Vue.cookie.get('token'))
   config.headers['token'] = Vue.cookie.get('token') // 请求头带上token
   return config
 }, error => {

@@ -1,13 +1,13 @@
 <template>
-  <div class="mod-role">
+  <div class="mod-generator">
     <el-form :inline="true" :model="dataForm" @keyup.enter.native="getDataList()">
       <el-form-item>
-        <el-input v-model="dataForm.roleName" placeholder="表名" clearable></el-input>
+        <el-input v-model="dataForm.tableName" placeholder="表名" clearable></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button @click="getDataList()">查询</el-button>
+        <el-button @click="getDataList()" >查询</el-button>
         <el-button v-if="isAuth('sys:generator:code')" type="danger" @click="generatorCode()"
-                   :disabled="dataListSelections.length <= 0">生成代码
+                   :disabled="dataListSelections.length <= 0">批量生成代码
         </el-button>
       </el-form-item>
     </el-form>
@@ -25,32 +25,24 @@
       </el-table-column>
 
       <el-table-column
-        prop="roleId"
-        header-align="center"
-        align="center"
-        width="80"
-        label="ID">
-      </el-table-column>
-
-      <el-table-column
-        prop="roleName"
+        prop="tableName"
         header-align="center"
         align="center"
         label="表名">
       </el-table-column>
 
       <el-table-column
-        prop="remark"
+        prop="engine"
         header-align="center"
         align="center"
         label="Engine">
       </el-table-column>
 
       <el-table-column
-        prop="createTime"
+        prop="tableComment"
         header-align="center"
         align="center"
-        width="180"
+        width="240"
         label="表备注">
       </el-table-column>
 
@@ -58,7 +50,7 @@
         prop="createTime"
         header-align="center"
         align="center"
-        width="180"
+        width="240"
         label="创建时间">
       </el-table-column>
 
@@ -70,7 +62,7 @@
         label="操作">
         <template slot-scope="scope">
           <el-button v-if="isAuth('sys:generator:code')" type="text" size="small"
-                     @click="generatorCode(scope.row.roleId)">生成代码
+                     @click="generatorCode(scope.row.tableName)">生成代码
           </el-button>
         </template>
       </el-table-column>
@@ -84,19 +76,16 @@
       :total="totalPage"
       layout="total, sizes, prev, pager, next, jumper">
     </el-pagination>
-    <!-- 弹窗, 新增 / 修改 -->
-    <add-or-update v-if="addOrUpdateVisible" ref="addOrUpdate" @refreshDataList="getDataList"></add-or-update>
   </div>
 </template>
 
 <script>
-  import AddOrUpdate from './role-add-or-update'
-
   export default {
     data () {
       return {
         dataForm: {
-          roleName: ''
+          tableName: '',
+          tables: ''
         },
         dataList: [],
         pageIndex: 1,
@@ -106,9 +95,6 @@
         dataListSelections: [],
         addOrUpdateVisible: false
       }
-    },
-    components: {
-      AddOrUpdate
     },
     activated () {
       this.getDataList()
@@ -123,7 +109,7 @@
           params: this.$http.adornParams({
             'page': this.pageIndex,
             'limit': this.pageSize,
-            'roleName': this.dataForm.roleName
+            'tableName': this.dataForm.tableName
           })
         }).then(({data}) => {
           if (data && data.code === 0) {
@@ -151,34 +137,17 @@
       selectionChangeHandle (val) {
         this.dataListSelections = val
       },
-      // 删除
-      generatorCode (id) {
-        var ids = id ? [id] : this.dataListSelections.map(item => {
-          return item.roleId
+      // 代码生成
+      generatorCode (tableName) {
+        var tableNames = tableName ? [tableName] : this.dataListSelections.map(item => {
+          return item.tableName
         })
-        this.$confirm(`确定对[id=${ids.join(',')}]进行[${id ? '删除' : '批量删除'}]操作?`, '提示', {
+        this.$confirm(`确定对[tableName=${tableNames.join(',')}]进行[${tableName ? '生成' : '批量生成'}]操作?`, '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-          this.$http({
-            url: this.$http.adornUrl('/sys/role/delete'),
-            method: 'post',
-            data: this.$http.adornData(ids, false)
-          }).then(({data}) => {
-            if (data && data.code === 0) {
-              this.$message({
-                message: '操作成功',
-                type: 'success',
-                duration: 1500,
-                onClose: () => {
-                  this.getDataList()
-                }
-              })
-            } else {
-              this.$message.error(data.msg)
-            }
-          })
+          window.open(this.$http.adornUrl('/sys/generator/code?tables=' + tableNames))
         }).catch(() => {
         })
       }
