@@ -9,6 +9,7 @@
           <el-radio :label="1">七牛</el-radio>
           <el-radio :label="2">阿里云</el-radio>
           <el-radio :label="3">腾讯云</el-radio>
+          <el-radio :label="4">fastDFS</el-radio>
         </el-radio-group>
       </el-form-item>
       <template v-if="dataForm.type === 1">
@@ -72,6 +73,17 @@
         </el-form-item>
         <el-form-item label="Bucket所属地区">
           <el-input v-model="dataForm.qcloudRegion" placeholder="如：sh（可选值 ，华南：gz 华北：tj 华东：sh）"></el-input>
+        </el-form-item>
+      </template>
+      <template v-else-if="dataForm.type === 4">
+        <el-form-item label="secret key">
+          <el-input v-model="dataForm.fastDFSSecretKey" placeholder="fastDFS secret key"></el-input>
+        </el-form-item>
+        <el-form-item label="ng端口">
+          <el-input v-model="dataForm.fastDFSPort" placeholder="fastDFS nginx 端口 默认端口 80"></el-input>
+        </el-form-item>
+        <el-form-item label="server 地址">
+          <el-input v-model="dataForm.fastDFSTrackerServers" placeholder="fastDFS 服务器的地址 例：192.168.5.10:22122 多个用 , 区分"></el-input>
         </el-form-item>
       </template>
     </el-form>

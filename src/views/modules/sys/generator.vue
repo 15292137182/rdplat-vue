@@ -147,7 +147,7 @@
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-          window.open(this.$http.adornUrl('/sys/generator/code?tables=' + tableNames))
+          window.open(this.$http.adornUrl(`/sys/generator/code?tables=` + tableNames + `&token=${this.$cookie.get('token')}`))
         }).catch(() => {
         })
       }

@@ -58,7 +58,10 @@ export function config () {
         'qcloudSecretId': '',
         'qcloudSecretKey': '',
         'qcloudBucketName': '',
-        'qcloudRegion': null
+        'qcloudRegion': null,
+        'fastDFSSecretKey': '',
+        'fastDFSPort': '',
+        'fastDFSTrackerServers': ''
       }
     }
   }
