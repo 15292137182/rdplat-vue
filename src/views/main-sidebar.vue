@@ -23,6 +23,10 @@
             <icon-svg name="editor" class="site-sidebar__menu-icon"></icon-svg>
             <span slot="title">ueditor</span>
           </el-menu-item>
+          <el-menu-item index="demo-kindeditor" @click="$router.push({ name: 'demo-kindeditor' })">
+            <icon-svg name="config" class="site-sidebar__menu-icon"></icon-svg>
+            <span slot="title">kindeditor</span>
+          </el-menu-item>
         </el-submenu>
         <sub-menu
           v-for="menu in menuList"
