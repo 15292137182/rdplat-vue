@@ -155,7 +155,8 @@
       position: absolute;
       top: 0;
       right: 0;
-      margin: 220px 800px 0 90px;
+      /*margin: 220px 800px 0 90px;*/
+      margin:17% 26% 0 19%;
       width: 470px;
       /*min-height: 100%;*/
       /*background-color: #0e1038;*/
