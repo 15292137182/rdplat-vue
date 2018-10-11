@@ -131,6 +131,10 @@
       overflow-y: auto;
       background-color: transparent;
     }
+    .el-form-item__error {
+      padding-top: 4px;
+      padding-left: 100px;
+    }
     .site-content {
       min-height: 100%;
       padding: 30px 500px 30px 30px;
