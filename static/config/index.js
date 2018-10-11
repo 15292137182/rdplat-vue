@@ -5,7 +5,8 @@
   window.SITE_CONFIG = {}
 
   // api接口请求地址
-  window.SITE_CONFIG['baseUrl'] = 'http://120.78.161.231:8085/rdplat'
+  // window.SITE_CONFIG['baseUrl'] = 'http://120.78.161.231:8085/rdplat'
+  window.SITE_CONFIG['baseUrl'] = 'http://localhost:8085/rdplat/'
 
   // cdn地址 = 域名 + 版本号
   window.SITE_CONFIG['domain'] = './' // 域名

@@ -7,21 +7,21 @@
           <p class="brand-info__intro">rdplat-fast-vue基于vue、element-ui构建开发，实现rdplat-fast后台管理前端功能，提供一套更优的前端解决方案。</p>
         </div>-->
         <div class="login-main">
-          <h3 class="login-title">后台登录</h3>
+          <h3 class="login-title">后台管理登录</h3>
           <el-form :model="dataForm" :rules="dataRule" ref="dataForm" @keyup.enter.native="dataFormSubmit()" status-icon>
             <el-form-item prop="userName">
-              <el-input v-model="dataForm.userName" placeholder="帐号" style="width: 78%"></el-input>
+              <el-input v-model="dataForm.userName" placeholder="帐号" style="width:78%" ></el-input>
             </el-form-item>
             <el-form-item prop="password">
-              <el-input v-model="dataForm.password" type="password" placeholder="密码" style="width: 78%"></el-input>
+              <el-input v-model="dataForm.password" type="password" placeholder="密码" style="width: 78%;"></el-input>
             </el-form-item>
             <el-form-item prop="captcha">
               <el-row :gutter="20">
                 <el-col :span="11">
-                  <el-input v-model="dataForm.captcha" placeholder="验证码" style="width: 90%">
+                  <el-input v-model="dataForm.captcha" placeholder="验证码" style="width: 90%; margin-left: 65px">
                   </el-input>
                 </el-col>
-                <el-col :span="8" class="login-captcha">
+                <el-col :span="10" class="login-captcha">
                   <img :src="captchaPath" @click="getCaptcha()" alt="">
                 </el-col>
               </el-row>
@@ -152,15 +152,36 @@
       opacity: .6;
     }
     .login-main {
+      /*border:2px solid;*/
+      /*border-top-color:red;*/
+      /*border-bottom-color:yellow;*/
+      /*border-left-color:green;*/
+      /*border-right-color:blue;*/
+      /*width: 600px;*/
+      /*height: 400px;*/
+      /*position: absolute;*/
+      /*left: 0;*/
+      /*bottom: 0;*/
+      /*top: 0;*/
+      /*right: 0;*/
+      /*margin: auto;*/
+      /*!*margin:17% 26% 0 19%;*!*/
+      /*!*width: 470px;*!*/
+      /*!*min-height: 100%;*!*/
+      /*!*background-color: #0e1038;*!*/
+      /*color: #fff;*/
+      margin: auto;
+      width: 600px;
+      height: 400px;
       position: absolute;
+      left: 0;
+      bottom: 0;
       top: 0;
       right: 0;
-      /*margin: 220px 800px 0 90px;*/
-      margin:17% 26% 0 19%;
-      width: 470px;
-      /*min-height: 100%;*/
-      /*background-color: #0e1038;*/
-      color: #fff;
+      border-radius: 15px;
+      background: rgba(225, 225, 225, 0.5);      /*设置form表单透明度*/
+      text-align: center;
+      overflow: hidden;
     }
     .login-title {
       font-size: 24px;
@@ -168,13 +189,24 @@
     .login-captcha {
       overflow: hidden;
       > img {
-        width: 100%;
+        margin-left: 80px;
+        width: 80%;
+        height: 20%;
         cursor: pointer;
       }
     }
     .login-btn-submit {
-      width: 100%;
-      margin-top: 38px;
+      /*width: 100%;*/
+      /*margin-top: 38px;*/
+      margin:20px auto;
+      text-shadow:0px -1px 0px #5b6ddc;       /*文字阴影设置*/
+      outline:none;
+      border:1px solid rgba(0,0,0,0.49);       /*按钮边框颜色与透明度设置*/
+      -webkit-background-clip: padding-box;   /*规定内容的绘制区域，padding-box为内边框距*/
+      background-clip: padding-box;
+      border-radius:6px;
+      cursor:pointer;     /*光标形状，pointer为一只手的形状*/
+      /*background-color:#768ee4;       !*按钮背景颜色*!*/
     }
   }
 </style>
