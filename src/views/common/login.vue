@@ -106,7 +106,7 @@
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: rgba(38, 50, 56, .6);
+    /*background-color: rgba(247, 247, 247, 0.6);*/
     overflow: hidden;
     &:before {
       position: fixed;
@@ -183,7 +183,7 @@
       top: 0;
       right: 0;
       border-radius: 15px;
-      background: rgba(225, 225, 225, 0.5);      /*设置form表单透明度*/
+      background: rgba(232, 232, 232, 0.5);      /*设置form表单透明度*/
       text-align: center;
       overflow: hidden;
     }
